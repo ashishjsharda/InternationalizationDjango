@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -55,7 +56,9 @@ ROOT_URLCONF = 'internatonalizatonexample.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [
+            join(BASE_DIR, 'internatonalizatonexample', 'templates'),
+        ]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -68,6 +71,12 @@ TEMPLATES = [
         },
     },
 ]
+
+LANGUAGES = (
+    ('en-us', 'English (US)'),
+    ('de', 'Deutsche'),
+    ('ar', 'عربى'),
+)
 
 WSGI_APPLICATION = 'internatonalizatonexample.wsgi.application'
 
@@ -106,6 +115,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+LOCALE_PATHS = [
+    join(BASE_DIR, 'internatonalizatonexample', 'locale'),
+]
+
 
 TIME_ZONE = 'UTC'
 
